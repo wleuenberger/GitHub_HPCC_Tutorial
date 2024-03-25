@@ -35,3 +35,4 @@ out <- glm(y ~ elev + forest, data = dat, family = binomial)
 
 summary(out)
 
+save(out, file = file.path(getwd(), 'Output/out.RData'))
