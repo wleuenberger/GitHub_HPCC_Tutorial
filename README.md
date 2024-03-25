@@ -14,7 +14,10 @@ This repository goes along with the lecture and demonstration.
 
 ### [Tutorial](Tutorial/)
 
-`HPCC.*`: The R markdown (`.Rmd`), markdown (`.md`; easiest viewing on GitHub) and `.html` documents for setting up your own GitHub account. 
+`HPCC.*`: The R markdown (`.Rmd`), markdown (`.md`; easiest viewing on GitHub) and `.html` documents for setting up your GitHub and HPCC. 
+
+`Tutorial.*`: The R markdown (`.Rmd`), markdown (`.md`; easiest viewing on GitHub) and `.html` documents for using this repository to commit changes and run a job on the HPCC. 
+
 
 ### Code
 
