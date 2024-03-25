@@ -137,3 +137,28 @@ cd /y
 ```
 
 ## Clone the repository on your mapped drive. 
+
+- Get the URL from the green `<> Code` chunk on the main page of the repository in your browser.
+
+- Change the following code to match your URL. In the Terminal window that is linked to your mapped drive, run the following code. 
+
+```{bash}
+git clone https://github.com/wleuenberger/GitHub_HPCC_Tutorial.git
+```
+
+- Type `ls` and note that your repository is now present on your mapped drive. Change your directory to the repository with `cd GitHub_HPCC_Tutorial`
+
+```{bash}
+ls
+cd GitHub_HPCC_Tutorial
+```
+
+- Switch tabs to the tab where you're logged into the HPCC. You can click the arrows or Terminal # drop down on the upper right of the tab. Or on Windows, you can press `Ctrl + Alt + F11` or `Ctrl + Alt + F12` to move between terminal tabs that you have open. 
+
+- Type `ls` to see that the tutorial is already on the HPCC (because you put it on your mapped drive). Change your directory to this folder in this tab as well.
+
+```{bash}
+ls
+cd GitHub_HPCC_Tutorial
+```
+
