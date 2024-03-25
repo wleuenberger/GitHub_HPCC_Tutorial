@@ -1,2 +1,21 @@
-# GitHub_HPCC_Tutorial
-A tutorial to go along with my lecture on how to use GitHub and the HPCC through RStudio. 
+# Tutorial: Using the HPCC and GitHub through RStudio
+
+### Wendy Leuenberger
+
+This repository goes along with the lecture and demonstration.
+
+---------------------------------
+
+# Repository contents
+
+### Tutorial
+
+### Code
+
+### Data
+
+### Output
+
+### Lecture materials
+
+### Submit a job
