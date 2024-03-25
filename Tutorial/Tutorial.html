@@ -447,16 +447,65 @@ changes)</p></li>
 <li><p>Type <code>git add README.md</code></p></li>
 <li><p>Type <code>git commit -m &#39;Added favorite animal&#39;</code></p></li>
 <li><p>Type <code>git push</code></p></li>
-<li><p>Typing <code>git status</code> is also helping for seeing what
+<li><p>Typing <code>git status</code> is also helpful for seeing what
 files have been changed and if you’re ahead of or behind the uploaded
 Git repository.</p></li>
+<li><p>RStudio is pretty cool in that it allows R and/or other languages
+in chunks. Here are the bash commands for committing changes. In
+windows, you can press <code>Ctrl + Alt + Enter</code> to run each line
+of code in the terminal.</p></li>
 </ul></li>
 </ol>
+<pre class="bash"><code>git pull
+
+git add README.md
+
+git commit -m &#39;Added favorite animal&#39;
+
+git push
+
+git status</code></pre>
 <p>All of these methods work! The rest of the tutorial will be in
 command line, but most could be done with any method. Command line is
 particularly useful with the HPCC, as you can have multiple terminal
 windows for your computer, the HPCC, and the mapped drive, all within
 one RStudio window.</p>
+</div>
+<div id="log-onto-the-hpcc" class="section level2">
+<h2>Log onto the HPCC</h2>
+<p>If you have an HPCC account, open up a second terminal window.</p>
+<ul>
+<li><p>Click on Terminal 1 under the Terminal tab</p></li>
+<li><p>Select New Terminal (or use <code>Alt + Shift + R</code> on
+Windows)</p></li>
+<li><p>Log onto the HPCC by typing
+<code>ssh -XY YourNetID@hpcc.msu.edu</code>. Note the hpcc.msu.edu
+instead of your regular email, and replace YourNetID with your own net
+ID. For example, I type:</p></li>
+</ul>
+<pre class="bash"><code>ssh -XY leuenbe9@hpcc.msu.edu</code></pre>
+<ul>
+<li><p>Type your MSU password. It’s the same as your email. You won’t be
+able to see the letters as you type. You can also put your password in
+the bash chunk and press <code>Ctrl + Alt + Enter</code>, but be careful
+to delete the password afterwards/keep it secure.</p></li>
+<li><p>Go to one of the development nodes. I use either
+<code>dev-intel16</code> or <code>dev-intel18</code>. Go for whichever
+has lower usage in parentheses.</p></li>
+</ul>
+<pre class="bash"><code>ssh dev-intel16
+ssh dev-intel18</code></pre>
+</div>
+<div id="navigate-to-your-mapped-drive" class="section level2">
+<h2>Navigate to your mapped drive</h2>
+<ul>
+<li><p>Open another terminal.</p></li>
+<li><p>Change directories to your mapped drive. You may need to go to it
+in your finder window (file explorer) and enter your password if it
+doesn’t let you. Note which letter you mapped your drive to. Mine is on
+the <code>Y</code> drive</p></li>
+</ul>
+<pre class="bash"><code>cd /y</code></pre>
 </div>
 </div>
 

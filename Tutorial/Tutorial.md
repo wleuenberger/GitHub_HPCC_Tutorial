@@ -7,6 +7,9 @@ output:
     keep_md: true
 ---
 
+
+
+
 # Tutorial with the repository
 
 This tutorial is designed for step-by-step editing of a GitHub repository and for learning how to submit jobs to the HPCC. The repository is meant to pick up at the end of HPCC.Rmd/md/html, once you have your computer configured to allow GitHub and RStudio to talk to each other and have the HPCC account mapped to your drive. You can also work through the exercises without the HPCC. 
@@ -79,6 +82,59 @@ There are multiple ways to make edits to a GitHub repository. Try out these thre
     
     - Type `git push`
     
-    - Typing `git status` is also helping for seeing what files have been changed and if you're ahead of or behind the uploaded Git repository. 
+    - Typing `git status` is also helpful for seeing what files have been changed and if you're ahead of or behind the uploaded Git repository. 
+
+    - RStudio is pretty cool in that it allows R and/or other languages in chunks. Here are the bash commands for committing changes. In windows, you can press `Ctrl + Alt + Enter` to run each line of code in the terminal. 
+    
+
+```bash
+git pull
+
+git add README.md
+
+git commit -m 'Added favorite animal'
+
+git push
+
+git status
+```
+
     
 All of these methods work! The rest of the tutorial will be in command line, but most could be done with any method. Command line is particularly useful with the HPCC, as you can have multiple terminal windows for your computer, the HPCC, and the mapped drive, all within one RStudio window.
+
+## Log onto the HPCC
+
+If you have an HPCC account, open up a second terminal window. 
+
+- Click on Terminal 1 under the Terminal tab
+
+- Select New Terminal (or use `Alt + Shift + R` on Windows)
+
+- Log onto the HPCC by typing `ssh -XY YourNetID@hpcc.msu.edu`. Note the hpcc.msu.edu instead of your regular email, and replace YourNetID with your own net ID. For example, I type: 
+    
+
+```bash
+ssh -XY leuenbe9@hpcc.msu.edu
+```
+ 
+- Type your MSU password. It's the same as your email. You won't be able to see the letters as you type. You can also put your password in the bash chunk and press `Ctrl + Alt + Enter`, but be careful to delete the password afterwards/keep it secure. 
+
+- Go to one of the development nodes. I use either `dev-intel16` or `dev-intel18`. Go for whichever has lower usage in parentheses. 
+
+
+```bash
+ssh dev-intel16
+ssh dev-intel18
+```
+
+## Navigate to your mapped drive
+
+- Open another terminal. 
+
+- Change directories to your mapped drive. You may need to go to it in your finder window (file explorer) and enter your password if it doesn't let you. Note which letter you mapped your drive to. Mine is on the `Y` drive
+
+
+```bash
+cd /y
+```
+
