@@ -259,7 +259,7 @@ Save this file in your repository. Then use `git add`, `git commit`, and `git pu
 
 Here's additional information and ways to set it globally: [https://docs.github.com/en/get-started/getting-started-with-git/configuring-git-to-handle-line-endings](https://docs.github.com/en/get-started/getting-started-with-git/configuring-git-to-handle-line-endings)
 
-I think all you need to do to set it globally is type `git config -- global core.autolf`. I'm testing it now. We'll see if it works.
+To set it globally, type this in your terminal: `git config --global core.autocrlf false`. 
 
 #### Manually changing
 

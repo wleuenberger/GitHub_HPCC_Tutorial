@@ -299,17 +299,23 @@ overflow-y: auto;
 border: 1px solid #ddd;
 border-radius: 4px;
 }
-.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-content: "\e259";
+.tabset-dropdown > .nav-tabs > li.active:before {
+content: "";
 font-family: 'Glyphicons Halflings';
 display: inline-block;
 padding: 10px;
 border-right: 1px solid #ddd;
 }
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-content: "\e258";
-font-family: 'Glyphicons Halflings';
+content: "";
 border: none;
+}
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+content: "";
+font-family: 'Glyphicons Halflings';
+display: inline-block;
+padding: 10px;
+border-right: 1px solid #ddd;
 }
 .tabset-dropdown > .nav-tabs > li.active {
 display: block;
@@ -734,9 +740,8 @@ repository.</p>
 <code>git commit</code>, and <code>git push</code> to upload it to your
 GitHub.</p>
 <p>Here’s additional information and ways to set it globally: <a href="https://docs.github.com/en/get-started/getting-started-with-git/configuring-git-to-handle-line-endings">https://docs.github.com/en/get-started/getting-started-with-git/configuring-git-to-handle-line-endings</a></p>
-<p>I think all you need to do to set it globally is type
-<code>git config -- global core.autolf</code>. I’m testing it now. We’ll
-see if it works.</p>
+<p>To set it globally, type this in your terminal:
+<code>git config --global core.autocrlf false</code>.</p>
 </div>
 <div id="manually-changing" class="section level4">
 <h4>Manually changing</h4>
