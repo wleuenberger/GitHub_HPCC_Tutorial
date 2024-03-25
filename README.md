@@ -4,6 +4,8 @@
 
 ### Today's Date
 
+### Favorite Animal
+
 This repository goes along with the lecture and demonstration.
 
 ---------------------------------
