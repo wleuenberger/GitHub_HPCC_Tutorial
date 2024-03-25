@@ -2,6 +2,8 @@
 
 ### Wendy Leuenberger
 
+### Today's Date
+
 This repository goes along with the lecture and demonstration.
 
 ---------------------------------
