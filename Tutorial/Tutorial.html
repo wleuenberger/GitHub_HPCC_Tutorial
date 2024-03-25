@@ -365,6 +365,99 @@ display: none;
 
 <div id="tutorial-with-the-repository" class="section level1">
 <h1>Tutorial with the repository</h1>
+<p>This tutorial is designed for step-by-step editing of a GitHub
+repository and for learning how to submit jobs to the HPCC. The
+repository is meant to pick up at the end of HPCC.Rmd/md/html, once you
+have your computer configured to allow GitHub and RStudio to talk to
+each other and have the HPCC account mapped to your drive. You can also
+work through the exercises without the HPCC.</p>
+<div id="put-this-repository-on-your-computer" class="section level2">
+<h2>Put this repository on your computer</h2>
+<p>Fork the repository: Only owners of a repository can make changes.
+But if the repository is public, others can “fork” the repository. This
+creates a local copy on their GitHub that they can make changes to. Go
+to the main page of this repository. Above the green
+<code>&lt;&gt; Code</code> button, there are four buttons. The third
+says <code>Fork</code>. Click this button and make a copy of this
+repository in your account.</p>
+</div>
+<div id="clone-the-repository-to-your-computer" class="section level2">
+<h2>Clone the repository to your computer</h2>
+<p>Create a new RStudio project with Version Control and use your forked
+repository’s url to link the project to your repository. You can find
+the url by clicking the green <code>&lt;&gt; Code</code> button. (See
+the HPCC.* for more detail). Leave this project open.</p>
+</div>
+<div id="learn-how-to-make-edits" class="section level2">
+<h2>Learn how to make edits</h2>
+<p>There are multiple ways to make edits to a GitHub repository. Try out
+these three ways:</p>
+<ol style="list-style-type: decimal">
+<li><p>Commit using the web browser.</p>
+<ul>
+<li><p>In your web browser, navigate to the main page of the repository.
+Your README file should be showing.</p></li>
+<li><p>Above the header, you can see README on the left and a pencil and
+outline buttons on the right. Click on the pencil to edit.
+Alternatively, you can click the file name and then the edit button on
+the right.</p></li>
+<li><p>Replace my name with your name.</p></li>
+<li><p>Click the green <code>Commit changes...</code> button on the
+upper right.</p></li>
+<li><p>Add a commit message that is useful - i.e. “Added my
+name”</p></li>
+<li><p>Leave the toggle on
+<code>Commit directly to the main branch</code></p></li>
+<li><p>Click the green <code>Commit changes</code> button.</p></li>
+<li><p>Your name will now appear on the main README page!</p></li>
+<li><p>Go to your RStudio window that is linked to your GitHub
+repository. Go to the Terminal window (usually the tab next to the
+Console in the lower left window). You’ll see the file path to your
+repository. Type <code>git pull</code> to pull the change you just made
+to the README.md in the browser.</p></li>
+</ul></li>
+<li><p>In RStudio, using the Git tab.</p>
+<ul>
+<li><p>Open the README.md document. You can find it under Files in the
+lower right window.</p></li>
+<li><p>Underneath your name, replace <code>Today&#39;s Date</code> with the
+Date.</p></li>
+<li><p>Save the file.</p></li>
+<li><p>In the upper right window, go to the Git tab. Check the box under
+the <code>Staged</code> column for the README.md.</p></li>
+<li><p>Click the <code>Commit</code> button above the files.</p></li>
+<li><p>Type a commit message like <code>Added today&#39;s date</code> in the
+window on the upper right.</p></li>
+<li><p>Click <code>Commit</code></p></li>
+<li><p>On the upper right, click the <code>Push</code> button.</p></li>
+<li><p>Close the Git window and go to the repository in your web
+browser. Refresh and the date that you added will show up.</p></li>
+</ul></li>
+<li><p>In RStudio, using command line.</p>
+<ul>
+<li><p>Go back to your README.md in RStudio.</p></li>
+<li><p>Underneath the Date, note the Favorite Animal line. Replace
+Favorite Animal with your favorite animal or something else
+fun.</p></li>
+<li><p>Go to the Terminal tab next to the console. (On windows, you can
+use Ctrl + Alt + M to navigate to the terminal)</p></li>
+<li><p>Type <code>git pull</code> (you haven’t done anything that needs
+to be pulled, but it’s a good practice to pull before pushing in case of
+changes)</p></li>
+<li><p>Type <code>git add README.md</code></p></li>
+<li><p>Type <code>git commit -m &#39;Added favorite animal&#39;</code></p></li>
+<li><p>Type <code>git push</code></p></li>
+<li><p>Typing <code>git status</code> is also helping for seeing what
+files have been changed and if you’re ahead of or behind the uploaded
+Git repository.</p></li>
+</ul></li>
+</ol>
+<p>All of these methods work! The rest of the tutorial will be in
+command line, but most could be done with any method. Command line is
+particularly useful with the HPCC, as you can have multiple terminal
+windows for your computer, the HPCC, and the mapped drive, all within
+one RStudio window.</p>
+</div>
 </div>
 
 
