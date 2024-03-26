@@ -24,7 +24,7 @@ Fork the repository: Only owners of a repository can make changes. But if the re
 
 ## Clone the repository to your computer
 
-Create a new RStudio project with Version Control and use your forked repository's url to link the project to your repository. You can find the url by clicking the green  `<> Code` button. (See the HPCC.* for more detail). Leave this project open. 
+Create a new RStudio project with Version Control and use your forked repository's url to link the project to your repository. You can find the url by clicking the green  `<> Code` button. (See the HPCC files in the Tutorial folder for more detail). Leave this project open. 
 
 ## Learn how to make edits
 
@@ -74,7 +74,7 @@ There are multiple ways to make edits to a GitHub repository. Try out these thre
 
     - Go back to your README.md in RStudio. 
     
-    - Underneath the Date, note the Favorite Animal line. Replace Favorite Animal with your favorite animal or something else fun. 
+    - Replace my email with your email. 
     
     - Go to the Terminal tab next to the console. (On windows, you can use Ctrl + Alt + M to navigate to the terminal)
     
