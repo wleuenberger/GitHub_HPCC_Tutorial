@@ -1,0 +1,37 @@
+#!/bin/bash --login
+
+# how long? 168:00:00 is the max (7 days)
+#SBATCH --time=00:05:00
+
+# how much memory?
+#SBATCH --mem=2G
+
+# specify nodes needed.
+#SBATCH --ntasks=1
+
+# specify CPUs (or cores per task)
+#SBATCH --cpus-per-task=1
+
+# specify which development nodes you want the job run on. 
+#SBATCH --constraint="[intel16|intel18|amd20]"
+
+# email me
+#SBATCH --mail-type=FAIL,END
+#SBATCH --mail-user=leuenbe9@msu.edu
+
+# change to current directory
+cd $SLURM_SUBMIT_DIR
+
+# add necessary modules
+module purge
+module load GCC/11.2.0
+module load OpenMPI/4.1.1
+module load R/4.1.2
+R --no-environ
+
+# run R commandline with the Rscript command
+Rscript Code/WarblerForHPCC.R 
+
+squeue -l $SLURM_JOB_ID
+
+scontrol show job $SLURM_JOB_ID
