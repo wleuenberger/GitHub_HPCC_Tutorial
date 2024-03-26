@@ -20,11 +20,17 @@ This repository goes along with the lecture and demonstration.
 
 
 ### Code
+`WarblerForHPCC.R`: Code file used in this tutorial. 
 
 ### Data
+`warbler-data.rda`: Data used in `WarblerForHPCC.R`
 
 ### Output
+Save your model output here
 
 ### Lecture materials
+`HPCC_Presentation.*`: Rmd and html files of the brief slides accompanying this tutorial.
+I'll add a link to the lecture once it's uploaded.
 
 ### Submit a job
+`runWarbler.sb`: File used to run code on the HPCC. 
