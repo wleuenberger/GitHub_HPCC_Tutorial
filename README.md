@@ -4,7 +4,7 @@
 
 ### 3/26/2024
 
-### Email here
+### leuenbe9@msu.edu
 
 This repository goes along with the lecture and demonstration.
 
