@@ -95,7 +95,7 @@ git pull
 
 git add README.md
 
-git commit -m 'Added favorite animal'
+git commit -m 'Added email'
 
 git push
 
@@ -155,7 +155,7 @@ ls
 cd GitHub_HPCC_Tutorial
 ```
 
-- Switch tabs to the tab where you're logged into the HPCC. You can click the arrows or Terminal # drop down on the upper right of the tab. Or on Windows, you can press `Ctrl + Alt + F11` or `Ctrl + Alt + F12` to move between terminal tabs that you have open. 
+- Switch tabs to the tab where you're logged into the HPCC. You can click the arrows or Terminal # drop down on the upper right of the tab. Or on Windows, you can press `Shift + Alt + F11` or `Shift + Alt + F12` to move between terminal tabs that you have open. 
 
 - Type `ls` to see that the tutorial is already on the HPCC (because you put it on your mapped drive). Change your directory to this folder in this tab as well.
 
