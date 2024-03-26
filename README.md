@@ -19,16 +19,16 @@ This repository goes along with the lecture and demonstration.
 `Tutorial.*`: The R markdown (`.Rmd`), markdown (`.md`; easiest viewing on GitHub) and `.html` documents for using this repository to commit changes and run a job on the HPCC. 
 
 
-### Code
+### [Code](Code/)
 `WarblerForHPCC.R`: Code file used in this tutorial. 
 
-### Data
+### [Data](Data/)
 `warbler-data.rda`: Data used in `WarblerForHPCC.R`
 
-### Output
+### [Output](Output/)
 Save your model output here
 
-### Lecture materials
+### [Lecture materials](Lecture/)
 `HPCC_Presentation.*`: Rmd and html files of the brief slides accompanying this tutorial.
 I'll add a link to the lecture once it's uploaded.
 
