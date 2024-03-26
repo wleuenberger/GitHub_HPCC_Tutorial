@@ -1,0 +1,266 @@
+---
+title: "High Performance Computing"
+subtitle: "Using the HPCC, GitHub, and RStudio"
+author: "Wendy Leuenberger"
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    lib_dir: libs
+    nature:
+      highlightStyle: solarized-dark
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_solarized_dark(
+  text_font_size = '1.25rem'
+  # base_color = "#1c5253",
+  # header_font_google = google_font("Josefin Sans"),
+  # text_font_google   = google_font("Montserrat", "300", "300i"),
+  # code_font_google   = google_font("Fira Mono")
+)
+```
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+
+```
+
+# Learning objective
+
+- Who, What, Why of the HPCC and GitHub
+- Guide to using these tools
+- Not interactive today
+
+---
+
+# Overview
+
+- HPCC
+  - Supercomputer
+- GitHub
+  - Collaborate and version control
+- RStudio
+  - Access hub
+- Set up and workflow demonstration
+
+---
+
+# MSU Institute for Cyber-Enabled Research (ICER)
+
+[https://icer.msu.edu/](https://icer.msu.edu/)
+
+- Computational hardware and software
+- User training
+- User support
+- Grant-writing support
+
+---
+
+# High Performance Computing 
+
+![34963657.jpeg](34963657.jpeg)
+
+---
+
+# What does it mean for us?
+
+- Can run long jobs on the HPCC without tying up personal computer
+- Can run jobs in parallel
+  - Bayesian often runs 3 chains. Each can be run simultaneously
+- Huge datasets or processing that can't be done on a typical computer
+  - Evolution, especially digital evolution
+  - Large genetic sequences
+  - Long Bayesian models
+  - Jobs that take up to seven days
+
+---
+
+# Downsides
+
+- Substantial learning curve 
+    - Hopefully this document helps!
+- Submitted jobs don't run immediately
+  - Minutes to days. Generally not too long
+- File transfer and storage can be challenging
+  - GitHub and mapping your HPCC drive helps a lot
+- Can be down for maintenance
+- Changes in access pathways - i.e. authentication changes
+
+---
+
+# HPCC Availability
+
+- PI must request account for researchers
+  - [https://icer.msu.edu/users/getting-started](https://icer.msu.edu/users/getting-started)
+- Some courses use the HPCC and create accounts
+- All MSU researchers can access at no cost
+- Buy-in program 
+  - Priority access
+  - Additional storage
+  - Faculty buy hardware at cost, ICER maintains
+
+---
+
+# Accessing the HPCC
+
+- Need a secure shell (ssh) to access
+- [https://docs.icer.msu.edu/install_ssh_client/](https://docs.icer.msu.edu/install_ssh_client/)
+- Terminal
+  - RStudio or regular computer terminal (MacOS)
+  - Fully command line access
+- MobaXTerm
+  - Can upload and download files using GUI or command line
+
+---
+
+# Accessing the HPCC
+
+- Online browser access 
+  - [OnDemand](https://cilogon.org/authorize?response_type=code&scope=openid%20profile%20email%20org.cilogon.userinfo&client_id=cilogon%3A%2Fclient_id%2F7f3abb985356946fa1f68d2de33720c4&state=yb9i3L-ZJJn71Hko9VBNDNnsTdA&redirect_uri=https%3A%2F%2Fondemand.hpcc.msu.edu%2Foidc&nonce=niAIr4gRyhHRhC0A1dzSIXmwnHqDT_O8ZHYrXYHZAMo&idphint=urn%3Amace%3Aincommon%3Amsu.edu)
+  - Can upload and download files using Graphical User Interface (GUI; like RStudio)
+  - Hosts RStudio sessions
+  - Can run GUI programs like RStudio
+  - Might not host everything
+  - Recommended for getting started
+
+---
+
+# Mapping Home Drive
+
+- Mapping a drive allows you to see your files in the File Explorer window
+- Allows you to access your drive from your Terminal
+- Can drag and drop files onto a mapped drive as long as you're logged into the HPCC on your Terminal (and sometimes VPN)
+- Can be a pain to set up with authentication requirements, but once set up is usually good-to-go
+- Samba (My current approach) [https://docs.icer.msu.edu/Mapping_HPC_drives_with_Samba/](https://docs.icer.msu.edu/Mapping_HPC_drives_with_Samba/)
+  - Requires university IP address or VPN to access
+- SSHFS [https://docs.icer.msu.edu/Mapping_HPC_drives_with_SSHFS/](https://docs.icer.msu.edu/Mapping_HPC_drives_with_SSHFS/)
+
+---
+
+# Troubleshooting
+
+- HPCC Documentation: [https://docs.icer.msu.edu/](https://docs.icer.msu.edu/)
+- System status
+  - ICER Service Status [https://blog.icer.msu.edu/](https://blog.icer.msu.edu/)
+  - Dashboard [https://icer.msu.edu/dashboard](https://icer.msu.edu/dashboard)
+- Office hours on Teams
+  - Monday and Thursday 1-2 pm
+  - [https://docs.icer.msu.edu/virtual_help_desk/](https://docs.icer.msu.edu/virtual_help_desk/)
+
+---
+
+# Lab Notebooks
+
+- Record of problem solving/workflows. My workflow is published on ICER's Lab Notebooks so that anyone can read it
+
+- If you develop a workflow or any other material, can provide it to ICER to post here
+
+- [https://docs.icer.msu.edu/Lab_Notebooks/](https://docs.icer.msu.edu/Lab_Notebooks/)
+
+- [https://docs.icer.msu.edu/20221022-Wendy_lab_post/](https://docs.icer.msu.edu/20221022-Wendy_lab_post/)
+
+---
+
+# Acknowledgments in Publications: 
+
+>"This work was supported in part by Michigan State University through computational resources provided by the Institute for Cyber-Enabled Research."
+
+---
+
+# Git and GitHub
+
+- Git is open source version control software
+- Several other software programs use Git, including GitHub
+- Make repositories that contain everything you're using for a project
+- Version control means that GitHub will record each of the changes you make to your files
+  - Really helpful if you mess up and want to go back to a previous version
+  
+---
+
+# GitHub and Collaboration
+
+- Multiple users can have access to the same repository
+- Can help in making sure that everyone has up-to-date files
+- Sometimes painful if two people edit the same file simultaneously. Can be fixed, but is a little tricky
+- Can be useful for class project settings 
+
+---
+
+# GitHub and RStudio
+
+- Integrates well with RStudio
+- RStudio's projects can be set up as their own Git repositories
+- Accessible via Terminal tab next to the Console tab
+- Accessible via the Git tab next to the Environment tab
+  - Might be more user-friendly if using GitHub without the HPCC 
+  - Can only access the working directory (not both working directory and y drive)
+  - Terminal lets you have both working directory and mapped drive in one RStudio window
+
+---
+
+# Note: File Size Limitations
+
+- GitHub is not great for many large files due to version control, since it stores copies of each change
+- 100 MB limit
+- GitHub Large File System exists, but does not work well if you're ever going to change your file. I don't recommend it
+- [https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github)
+
+---
+
+# What if you have large files
+
+- Upload or download onto HPCC manually
+  - Upload or download buttons if interactive GUI
+  - cp filename.ext with file paths if command line
+- rsync.hpcc.msu.edu
+  - [https://docs.icer.msu.edu/File_transfer/](https://docs.icer.msu.edu/File_transfer/)
+  - Specific to file transfer
+  - Requires SSH keys, not username/password  
+- Globus
+  - Great for large file transfer [https://docs.icer.msu.edu/Transferring_data_with_Globus/](https://docs.icer.msu.edu/Transferring_data_with_Globus/)
+- Open Source Framework
+  - [https://osf.io/](https://osf.io/)
+  - Integrates with GitHub, sharable
+  - Only for hosting, won't sync with HPCC
+
+---
+
+# GitHub Learning Curve
+
+- GitHub has its own commands and functions
+- Add, commit, push, pull, status
+- Fantastic source for integration with RStudio: [https://happygitwithr.com/](https://happygitwithr.com/)
+- General Git command line tutorial: [https://github.com/git/git/blob/master/Documentation/gittutorial.txt](https://github.com/git/git/blob/master/Documentation/gittutorial.txt)
+- Cheat sheet: [https://education.github.com/git-cheat-sheet-education.pdf](https://education.github.com/git-cheat-sheet-education.pdf)
+
+---
+
+# RStudio
+
+- Access hub for GitHub and HPCC
+- My approach is to open three Terminal windows
+  - One to transfer between GitHub and working directory
+  - One to transfer between GitHub and HPCC mapped drive
+  - One logged into the HPCC to run the code and submit jobs
+- RStudio projects work well with GitHub repositories
+- Support for multiple languages
+  - R
+  - Python
+  - Stan (Bayesian)
+  - Markdown
+  - C/C++
+- Already familiar
+
+---
+
+# End to Conceptual Section
+
+Questions?
+
+---
+
+# On to Demonstration
