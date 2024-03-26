@@ -4,7 +4,7 @@
 
 ### Today's date
 
-### leuenbe9@msu.edu
+### Your email here
 
 This repository goes along with the lecture and demonstration.
 
