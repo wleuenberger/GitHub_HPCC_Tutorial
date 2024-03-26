@@ -2,7 +2,7 @@
 
 ### Your name here
 
-### 3/26/2024
+### Today's date
 
 ### leuenbe9@msu.edu
 
