@@ -34,17 +34,3 @@ dat <- data.frame(y, elev, forest)
 out <- glm(y ~ elev + forest, data = dat, family = binomial)
 
 summary(out)
-
-ID <- paste0('out',
-             length(list.files(path = file.path(getwd(), 'Output/'),
-                               pattern = 'out',
-                               full.names = FALSE)) + 1)
-
-# Print output file name in slurm.out file
-# Helpful for keeping track if you're running multiple versions
-paste('\n ************************************** \n \n',
-      'Output File Name:', ID, '\n \n',
-      '**************************************
-      ') %>% cat
-
-save(out, file = file.path(getwd(), 'Output', paste0(ID, '.RData')))
