@@ -5,6 +5,8 @@ date: "2024-03-25"
 output: 
   html_document:
     keep_md: true
+editor_options: 
+  chunk_output_type: console
 ---
 
 
@@ -165,5 +167,176 @@ cd GitHub_HPCC_Tutorial
 ```bash
 ls
 cd GitHub_HPCC_Tutorial
+```
+
+## Working with R via the HPCC. 
+
+There are other files in this repository. I've included some data and code to get us started. There are four ways I know of to work with R code on the HPCC:
+
+- OnDemand - open up an RStudio session in your web browser. Lowest barrier to entry, but limited on what you can do. We won't go over this method.
+
+- Open up R in your HPCC terminal and run code directly.
+
+- Run an Rscript on the development node.
+
+- Submit jobs to the HPCC to run remotely
+
+    - This is the one that really makes using the HPCC worthwhile, as you can have multiple jobs running simultaneously for up to a week
+    
+### Open R in the terminal
+
+You can open R directly and run code line by line similar to RStudio. You have to load certain modules first. This stage is particularly useful for checking to make sure that the code works on the HPCC and that all packages are loaded. 
+
+Load modules
+
+```bash
+module load GCC/11.2.0
+module load OpenMPI/4.1.1
+module load R/4.1.2
+```
+
+Open an R session on the HPCC
+
+```bash
+R
+```
+
+Now you can type code or use `Ctrl + Alt + Enter` to run code from a file open in RStudio. Try it out for a bit. 
+
+See if you can load some of your common packages, and if not, install them here. If you install them here, they will be available when you submit jobs. 
+
+
+```r
+library(tidyverse)
+# install.packages('tidyverse')  # I think this one will be loaded, but not all will. 
+```
+
+To quit the R session, use the quit function `q()`
+
+```r
+q()
+n # Use n to not save the workspace image
+```
+
+### Run a script on command line
+
+```bash
+Rscript Code/WarblerForHPCC.R
+```
+
+It should have printed results. That's great, but what do you do with those results? Note that just running code doesn't inherently mean that anything has been saved for you to work with once the job has completed. 
+
+## Using GitHub and HPCC together
+
+### Modify the R code to save model object
+
+In RStudio, add this code to the bottom of the `WarblerForHPCC.R` file
+
+
+```r
+save(out, file = file.path(getwd(), 'Output/out.RData'))
+```
+
+Now, save your `WarblerForHPCC.R` file. Go to your terminal tab that's linked to your computer's copy of the GitHub repository. Pull from GitHub to start for safety, then add, commit (include a message), and push the change to GitHub. Switch to the terminal tab that's linked to your mapped drive of the HPCC, and pull the changes there. 
+
+Run the Rscript command again and check that it created the out.RData in the Output folder.
+
+
+```bash
+Rscript Code/WarblerForHPCC.R
+ls Output/
+```
+
+### Add files from the HPCC to GitHub
+
+You can move files both directions (Computer -> GitHub -> HPCC; HPCC -> GitHub -> Computer), assuming they're not too big for GitHub (<100 MB). Add out.RData to GitHub from the HPCC's terminal window, commit and push it, and pull it onto your computer. 
+
+Load it into your R session to see that it's there
+
+```r
+load(file = 'Output/out.RData')
+summary(out)
+```
+
+### Bonus: Dynamic saving
+
+It's easy to overwrite files on the HPCC. You won't get a warning or anything. If you anticipate running code multiple times to save objects with the same name, but not overwriting, then it helps to have code that can change the name of the output object based on the number of objects already in the file. Here's some sample code that can help.
+
+This step might be particularly useful if you are running multiple chains of a Bayesian model in parallel, or just want to keep old versions of something while trying something new.
+
+Add this to the R code and put everything on GitHub and the HPCC. (You can skip this step if you don't think you'll use it).
+
+
+```r
+ID <- paste0('out',
+              length(list.files(path = file.path(getwd(), 'Output/'),
+                                pattern = 'out',
+                                full.names = FALSE)) + 1)
+
+# Print output file name in slurm.out file
+# Helpful for keeping track if you're running multiple versions
+paste('\n ************************************** \n \n',
+      'Output File Name:', ID, '\n \n',
+      '**************************************
+      ') %>% cat
+
+save(out, file = file.path(getwd(), 'Output', paste0(ID, '.RData')))
+```
+
+## Submit a job to the HPCC
+
+Take a look at runWarbler.sb in the main section of the repository. This is the file that tells the HPCC to run a job. You can open it in RStudio or in Notepad++. You can set the time, memory, and more. Change the email address on line 20 to your email address so that you are emailed when the job finishes or if it fails. 
+
+Generally, I change the time and memory pretty often and the rest largely stays the same. Make sure to update the line with your code file if you want to run different code. The file path is relative to the location of the sbatch file. I usually leave the sbatch file in the main part of my repository. 
+
+Submit the job to the HPCC using sbatch and the file name. 
+
+```bash
+sbatch runWarbler.sb
+```
+
+Take a look at your queue of submitted jobs. This model runs quickly so it might have already finished. If so, you can run it again and immediately run this line. 
+
+```bash
+sq
+```
+
+
+```bash
+sbatch runWarbler.sb
+sq
+```
+
+The number that it tells you is the job ID. This number can help you keep track of your jobs and look at the output file that the job produces. Take a look here, but change the number to match your job number
+
+```bash
+cat slurm-33085536.out
+```
+
+You can see the model output and the saved model name here. Take a look in the repo.
+
+```bash
+ls Output/
+```
+
+### HPCC Bits and Pieces
+
+Sometimes you need to cancel a job. You can run scancel with your job number
+
+```bash
+scancel 33085536
+```
+
+Take a look at your quota of file space. Check the ICER website if you need to add more space
+
+```bash
+quota
+```
+
+Sometimes it's hard to know how much time and memory a job will take. You can look at past jobs to adjust future runs with reportseff
+
+```bash
+reportseff -u YourNetID
+reportseff -u leuenbe9
 ```
 
