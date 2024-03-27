@@ -1,6 +1,6 @@
 # Tutorial: Using the HPCC and GitHub through RStudio
 
-### Your name here
+### Wendy Leuenberger
 
 ### Today's date
 
