@@ -39,6 +39,8 @@ You will need to know your username, password, and the email associated with you
 
 Make sure that RStudio is running GitBash when it opens the Terminal. To do so, click Tools -> Global Options -> Terminal -> New terminals open with GitBash. If it doesn't say GitBash, change the drop down menu so that it does. It GitBash is not an option, you'll need to download Git. Here's reading on how to install Git for different operating systems: [https://happygitwithr.com/install-git.html](https://happygitwithr.com/install-git.html)
 
+*Note:* these are the instructions for Windows. If you use a Mac, then the New Terminals open with Bash rather than GitBash. 
+
 ### Check installation
 
 Go to the Terminal in RStudio. It's one of the tabs next to the Console. (Or use key command Shift+Alt+M) Type `which git` to make sure Git is installed. 
