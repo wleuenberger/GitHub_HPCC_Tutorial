@@ -299,23 +299,17 @@ overflow-y: auto;
 border: 1px solid #ddd;
 border-radius: 4px;
 }
-.tabset-dropdown > .nav-tabs > li.active:before {
-content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+content: "\e259";
 font-family: 'Glyphicons Halflings';
 display: inline-block;
 padding: 10px;
 border-right: 1px solid #ddd;
 }
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-content: "";
-border: none;
-}
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-content: "";
+content: "\e258";
 font-family: 'Glyphicons Halflings';
-display: inline-block;
-padding: 10px;
-border-right: 1px solid #ddd;
+border: none;
 }
 .tabset-dropdown > .nav-tabs > li.active {
 display: block;
@@ -696,9 +690,7 @@ file.</p>
 <p><code># export R_LIBS_USER=/mnt/home/leuenbe9/R_Lib/4.0.2-X11-20200622</code></p>
 <p><code># add necessary modules</code><br />
 <code>module purge</code><br />
-<code>module load GCC/11.2.0</code><br />
-<code>module load OpenMPI/4.1.1</code><br />
-<code>module load R/4.1.2</code><br />
+<code>module load R-bundle-CRAN/2023.12-foss-2023a</code><br />
 <code>R --no-environ</code></p>
 <p><code># run R commandline with the Rscript command</code><br />
 <code>Rscript Code/R/TryModel_ISM.R --vanilla</code></p>

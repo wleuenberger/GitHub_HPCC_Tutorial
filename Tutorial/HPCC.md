@@ -220,9 +220,7 @@ The sbatch file contains information needed to submit a job. Here is an example 
 
 `# add necessary modules`\
 `module purge`\
-`module load GCC/11.2.0`\
-`module load OpenMPI/4.1.1`\
-`module load R/4.1.2`\
+`module load R-bundle-CRAN/2023.12-foss-2023a`\
 `R --no-environ`
 
 `# run R commandline with the Rscript command`\
