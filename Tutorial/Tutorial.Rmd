@@ -184,9 +184,7 @@ You can open R directly and run code line by line similar to RStudio. You have t
 
 Load modules
 ```{bash}
-module load GCC/11.2.0
-module load OpenMPI/4.1.1
-module load R/4.1.2
+module load R-bundle-CRAN/2023.12-foss-2023a
 ```
 
 Open an R session on the HPCC
@@ -275,6 +273,8 @@ save(out, file = file.path(getwd(), 'Output', paste0(ID, '.RData')))
 Take a look at runWarbler.sb in the main section of the repository. This is the file that tells the HPCC to run a job. You can open it in RStudio or in Notepad++. You can set the time, memory, and more. Change the email address on line 20 to your email address so that you are emailed when the job finishes or if it fails. 
 
 Generally, I change the time and memory pretty often and the rest largely stays the same. Make sure to update the line with your code file if you want to run different code. The file path is relative to the location of the sbatch file. I usually leave the sbatch file in the main part of my repository. 
+
+Note: Please change the email address in line 20 to your email instead of mine. 
 
 Submit the job to the HPCC using sbatch and the file name. 
 ```{bash}

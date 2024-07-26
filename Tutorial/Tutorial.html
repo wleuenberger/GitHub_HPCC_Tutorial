@@ -11,7 +11,7 @@
 
 <meta name="author" content="Wendy Leuenberger" />
 
-<meta name="date" content="2024-03-26" />
+<meta name="date" content="2024-07-26" />
 
 <title>Tutorial</title>
 
@@ -299,23 +299,17 @@ overflow-y: auto;
 border: 1px solid #ddd;
 border-radius: 4px;
 }
-.tabset-dropdown > .nav-tabs > li.active:before {
-content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+content: "\e259";
 font-family: 'Glyphicons Halflings';
 display: inline-block;
 padding: 10px;
 border-right: 1px solid #ddd;
 }
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-content: "";
-border: none;
-}
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-content: "";
+content: "\e258";
 font-family: 'Glyphicons Halflings';
-display: inline-block;
-padding: 10px;
-border-right: 1px solid #ddd;
+border: none;
 }
 .tabset-dropdown > .nav-tabs > li.active {
 display: block;
@@ -358,7 +352,7 @@ display: none;
 
 <h1 class="title toc-ignore">Tutorial</h1>
 <h4 class="author">Wendy Leuenberger</h4>
-<h4 class="date">2024-03-26</h4>
+<h4 class="date">2024-07-26</h4>
 
 </div>
 
@@ -560,9 +554,7 @@ You have to load certain modules first. This stage is particularly
 useful for checking to make sure that the code works on the HPCC and
 that all packages are loaded.</p>
 <p>Load modules</p>
-<pre class="bash"><code>module load GCC/11.2.0
-module load OpenMPI/4.1.1
-module load R/4.1.2</code></pre>
+<pre class="bash"><code>module load R-bundle-CRAN/2023.12-foss-2023a</code></pre>
 <p>Open an R session on the HPCC</p>
 <pre class="bash"><code>R</code></pre>
 <p>Now you can type code or use <code>Ctrl + Alt + Enter</code> to run
@@ -652,6 +644,8 @@ largely stays the same. Make sure to update the line with your code file
 if you want to run different code. The file path is relative to the
 location of the sbatch file. I usually leave the sbatch file in the main
 part of my repository.</p>
+<p>Note: Please change the email address in line 20 to your email
+instead of mine.</p>
 <p>Submit the job to the HPCC using sbatch and the file name.</p>
 <pre class="bash"><code>sbatch runWarbler.sb</code></pre>
 <p>Take a look at your queue of submitted jobs. This model runs quickly

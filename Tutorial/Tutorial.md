@@ -1,7 +1,7 @@
 ---
 title: "Tutorial"
 author: "Wendy Leuenberger"
-date: "2024-03-26"
+date: "2024-07-26"
 output: 
   html_document:
     keep_md: true
@@ -89,7 +89,7 @@ There are multiple ways to make edits to a GitHub repository. Try out these thre
     - RStudio is pretty cool in that it allows R and/or other languages in chunks. Here are the bash commands for committing changes. In windows, you can press `Ctrl + Alt + Enter` to run each line of code in the terminal. 
     
 
-```bash
+``` bash
 git pull
 
 git add README.md
@@ -115,7 +115,7 @@ If you have an HPCC account, open up a second terminal window.
 - Log onto the HPCC by typing `ssh -XY YourNetID@hpcc.msu.edu`. Note the hpcc.msu.edu instead of your regular email, and replace YourNetID with your own net ID. For example, I type: 
     
 
-```bash
+``` bash
 ssh -XY leuenbe9@hpcc.msu.edu
 ```
  
@@ -124,7 +124,7 @@ ssh -XY leuenbe9@hpcc.msu.edu
 - Go to one of the development nodes. I use either `dev-intel16` or `dev-intel18`. Go for whichever has lower usage in parentheses. 
 
 
-```bash
+``` bash
 ssh dev-intel16
 ssh dev-intel18
 ```
@@ -136,7 +136,7 @@ ssh dev-intel18
 - Change directories to your mapped drive. You may need to go to it in your finder window (file explorer) and enter your password if it doesn't let you. Note which letter you mapped your drive to. Mine is on the `Y` drive
 
 
-```bash
+``` bash
 cd /y
 ```
 
@@ -147,14 +147,14 @@ cd /y
 - Change the following code to match your URL. In the Terminal window that is linked to your mapped drive, run the following code. 
 
 
-```bash
+``` bash
 git clone https://github.com/wleuenberger/GitHub_HPCC_Tutorial.git
 ```
 
 - Type `ls` and note that your repository is now present on your mapped drive. Change your directory to the repository with `cd GitHub_HPCC_Tutorial`
 
 
-```bash
+``` bash
 ls
 cd GitHub_HPCC_Tutorial
 ```
@@ -164,7 +164,7 @@ cd GitHub_HPCC_Tutorial
 - Type `ls` to see that the tutorial is already on the HPCC (because you put it on your mapped drive). Change your directory to this folder in this tab as well.
 
 
-```bash
+``` bash
 ls
 cd GitHub_HPCC_Tutorial
 ```
@@ -189,15 +189,13 @@ You can open R directly and run code line by line similar to RStudio. You have t
 
 Load modules
 
-```bash
-module load GCC/11.2.0
-module load OpenMPI/4.1.1
-module load R/4.1.2
+``` bash
+module load R-bundle-CRAN/2023.12-foss-2023a
 ```
 
 Open an R session on the HPCC
 
-```bash
+``` bash
 R
 ```
 
@@ -206,21 +204,21 @@ Now you can type code or use `Ctrl + Alt + Enter` to run code from a file open i
 See if you can load some of your common packages, and if not, install them here. If you install them here, they will be available when you submit jobs. 
 
 
-```r
+``` r
 library(tidyverse)
 # install.packages('tidyverse')  # I think this one will be loaded, but not all will. 
 ```
 
 To quit the R session, use the quit function `q()`
 
-```r
+``` r
 q()
 n # Use n to not save the workspace image
 ```
 
 ### Run a script on command line
 
-```bash
+``` bash
 Rscript Code/WarblerForHPCC.R
 ```
 
@@ -233,7 +231,7 @@ It should have printed results. That's great, but what do you do with those resu
 In RStudio, add this code to the bottom of the `WarblerForHPCC.R` file
 
 
-```r
+``` r
 save(out, file = file.path(getwd(), 'Output/out.RData'))
 ```
 
@@ -242,7 +240,7 @@ Now, save your `WarblerForHPCC.R` file. Go to your terminal tab that's linked to
 Run the Rscript command again and check that it created the out.RData in the Output folder.
 
 
-```bash
+``` bash
 Rscript Code/WarblerForHPCC.R
 ls Output/
 ```
@@ -253,7 +251,7 @@ You can move files both directions (Computer -> GitHub -> HPCC; HPCC -> GitHub -
 
 Load it into your R session to see that it's there
 
-```r
+``` r
 load(file = 'Output/out.RData')
 summary(out)
 ```
@@ -267,7 +265,7 @@ This step might be particularly useful if you are running multiple chains of a B
 Add this to the R code and put everything on GitHub and the HPCC. (You can skip this step if you don't think you'll use it).
 
 
-```r
+``` r
 ID <- paste0('out',
               length(list.files(path = file.path(getwd(), 'Output/'),
                                 pattern = 'out',
@@ -289,33 +287,35 @@ Take a look at runWarbler.sb in the main section of the repository. This is the 
 
 Generally, I change the time and memory pretty often and the rest largely stays the same. Make sure to update the line with your code file if you want to run different code. The file path is relative to the location of the sbatch file. I usually leave the sbatch file in the main part of my repository. 
 
+Note: Please change the email address in line 20 to your email instead of mine. 
+
 Submit the job to the HPCC using sbatch and the file name. 
 
-```bash
+``` bash
 sbatch runWarbler.sb
 ```
 
 Take a look at your queue of submitted jobs. This model runs quickly so it might have already finished. If so, you can run it again and immediately run this line. 
 
-```bash
+``` bash
 sq
 ```
 
 
-```bash
+``` bash
 sbatch runWarbler.sb
 sq
 ```
 
 The number that it tells you is the job ID. This number can help you keep track of your jobs and look at the output file that the job produces. Take a look here, but change the number to match your job number
 
-```bash
+``` bash
 cat slurm-33085536.out
 ```
 
 You can see the model output and the saved model name here. Take a look in the repo.
 
-```bash
+``` bash
 ls Output/
 ```
 
@@ -323,19 +323,19 @@ ls Output/
 
 Sometimes you need to cancel a job. You can run scancel with your job number
 
-```bash
+``` bash
 scancel 33085536
 ```
 
 Take a look at your quota of file space. Check the ICER website if you need to add more space
 
-```bash
+``` bash
 quota
 ```
 
 Sometimes it's hard to know how much time and memory a job will take. You can look at past jobs to adjust future runs with reportseff
 
-```bash
+``` bash
 reportseff -u YourNetID
 reportseff -u leuenbe9
 ```
