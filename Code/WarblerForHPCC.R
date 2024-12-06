@@ -2,6 +2,7 @@
 # SOLUTIONS
 rm(list = ls())
 library(tidyverse)
+library(spAbundance) 
 
 # Our goal for this analysis is to determine how elevation and forest cover
 # influence the probability of observing a black-throated blue warbler at 
