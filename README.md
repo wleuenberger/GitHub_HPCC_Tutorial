@@ -4,7 +4,7 @@
 
 ### 3/27/2024
 
-### bamaral@msu.edu
+### leuenbe9@msu.edu
 
 This repository goes along with the lecture and demonstration.
 
